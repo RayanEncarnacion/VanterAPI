@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 const port = process.env.PORT || 3000;
-const registerRoute = require("./server/routes/register");
-const loginRoute = require("./server/routes/login");
-const usersRoute = require("./server/routes/users");
-const updateRoute = require("./server/routes/update");
-const testsRoute = require("./server/routes/tests");
-const deleteRoute = require("./server/routes/delete");
+const registerRoute = require("./routes/register");
+const loginRoute = require("./routes/login");
+const usersRoute = require("./routes/users");
+const updateRoute = require("./routes/update");
+const testsRoute = require("./routes/tests");
+const deleteRoute = require("./routes/delete");
 
 // Send and receive data as JSON
 app.use(express.json());

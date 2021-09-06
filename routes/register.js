@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const User = require("../../models/User");
+const User = require("../models/User");
 
 // Create user
 router.post("/:username/:password/:passwordConfirmation", async (req, res) => {

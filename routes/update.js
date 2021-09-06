@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const User = require("../../models/User");
+const User = require("../models/User");
 
 router.put("/:id/:username/:password", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
