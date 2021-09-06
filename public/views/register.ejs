@@ -1,0 +1,41 @@
+<%- include('templates/head'); %>
+    <div class="app-container">
+      <form autocomplete="off">
+        <h2>REGISTER</h2>
+        <label for="username">Username</label>
+        <input type="text" name="username" required />
+        <label for="password">Password</label>
+        <input type="text" name="password" required />
+        <label for="password">Confirm Password</label>
+        <input type="password" name="confirmation" required />
+        <div class="error-div"></div>
+        <input type="submit" value="SIGN IN" />
+      </form>
+    </div>
+
+<script>
+const usernameInput = document.querySelector('input[name="username"]')
+const passwordInput = document.querySelector('input[name="password"]')
+const confirmationInput = document.querySelector('input[name="confirmation"]')
+const errorParent = document.querySelector('.error-div')
+const submitInput = document.querySelector('input[type="submit"]')
+
+submitInput.addEventListener('click', async (e) => {
+  e.preventDefault()
+  if(passwordInput.value !== confirmationInput.value) {
+    const error = `<p class="error-paragraph">Password do not match!</p>`
+   errorParent.insertAdjacentHTML("afterbegin", error)
+   setTimeout(3000, errorParent.remove())
+  } else {
+    const data = await fetch(`/register/${usernameInput.value}/${passwordInput.value}/${confirmationInput.value}`, {method: "POST"})
+    const res = await data.json()
+    
+    if (res.status) {
+      window.location.href = '/login'
+    }
+  }
+})
+</script>
+
+  </body>
+</html>

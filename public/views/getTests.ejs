@@ -1,0 +1,56 @@
+<%- include('templates/head'); %>
+
+<div class="app-container">
+  <form autocomplete="off" class="flex-container" style="width: 100%;" action="">
+    <h2>Get Tests</h2>
+    <h3>User ID</h2>
+    <input type="text" name="id" style="margin-bottom: 1em;" required>
+    <h3>Select Test</h2>
+    <div style="display: flex; justify-content: space-evenly; align-items: center;">
+      <div class="covid">
+        <input type="checkbox" name="Covid-19">
+        <label for="Covid-19">Covid-19</label>
+      </div>
+      <div class="hcg">
+        <input type="checkbox" name="HCG">
+        <label for="HCG">HCG</label>
+      </div>
+      <div class="hiv">
+        <input type="checkbox" name="HIV">
+        <label for="HIV">HIV</label>
+      </div>
+    </div>
+    <a href="#" class="btn" style="margin-top: 2em;">UPDATE INFO</a>
+  </form>
+</div>
+ 
+<script>
+const updateBtn = document.querySelector('.btn');
+const id = document.querySelector('input[name="id"]');
+let tests = [];
+
+  // Click event
+  updateBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    // Getting the checked boxes
+    const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    // Pushing to Tests array
+    checkedBoxes.forEach(box => tests.push(box.name));
+    
+    try {
+      const data = await fetch(`/tests/${id.value}/${tests}`, {method: "PUT"});
+      const res = await data.json();
+
+      if (res.updated) {
+        window.location.href = '/users';
+      } else console.log(res);
+    } catch (error) {
+      console.log("Try error")
+    }
+  })
+</script>
+
+</body>
+</html>

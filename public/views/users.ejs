@@ -1,0 +1,18 @@
+<%- include('templates/head'); %>
+
+  <div class="app-container">
+    <h2 id="usersFormHeader">Users Panel</h2>
+
+    <div style="width: 100%;">
+      <a href="/users/getUser" class="btn">GET A USER</a>
+      <form action="/users/allUsers" method="GET">
+        <input type="submit" value="GET ALL USERS" />
+      </form>
+      <a href="/update" class="btn">UPDATE USER</a>
+      <a href="/tests" class="btn">SELECT TEST</a>
+      <a href="/tests/myTests" class="btn">MY TESTS</a>
+      <a href="/delete" class="btn">DELETE USER</a>
+    </div>
+  </div>
+</body>
+</html>

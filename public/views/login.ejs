@@ -1,0 +1,38 @@
+<%- include('templates/head'); %>
+    <div class="app-container">
+      <form autocomplete="off" class="flex-container" >
+        <h2>LOGIN</h2>
+        <label for="username">Username</label>
+        <input type="text" name="username" required />
+        <label for="password">Password</label>
+        <input type="text" name="password" required />
+        <div class="error-div"></div>
+        <input type="submit" value="LOGIN" />
+      </form>
+    </div>
+
+<script>
+const usernameInput = document.querySelector('input[name="username"]')
+const passwordInput = document.querySelector('input[name="password"]')
+const errorParent = document.querySelector('.error-div')
+const submitInput = document.querySelector('input[type="submit"]')
+
+
+submitInput.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const data = await fetch(`/login/${usernameInput.value}/${passwordInput.value}`, {method: "GET"});
+    const res = await data.json();
+
+    if (!res.logged) {
+      // If error message exist return
+      
+    } else {
+      window.location.href = '/users'
+    }
+  }
+)
+</script>
+
+  </body>
+</html>

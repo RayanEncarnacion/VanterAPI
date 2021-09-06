@@ -1,0 +1,39 @@
+<%- include('templates/head'); %>
+
+    <div class="app-container">
+      <form autocomplete="off" class="flex-container" action="">
+        <h2>Update</h2>
+        <label for="username">User ID</label>
+        <input type="text" name="id" required />
+        <label for="username">Username</label>
+        <input type="text" name="username" required />
+        <label for="password">Password</label>
+        <input type="text" name="password" required />
+        <a href="#" class="btn">SUBMIT</a>
+      </form>
+    </div>
+
+    <script>
+      const updateBtn = document.querySelector('.btn');
+      // Inputs
+      const id = document.querySelector('input[name="id"]');
+      const username = document.querySelector('input[name="username"]');
+      const password = document.querySelector('input[name="password"]');
+      
+
+      // Click event
+      updateBtn.addEventListener('click', async (e) => {
+        e.preventDefault()
+      
+        const data = await fetch(`/update/${id.value}/${username.value}/${password.value}`, {
+          method: "put"
+        });
+        const res = await data.json();
+        if(res.updated) {
+          window.location.href = '/users';
+        } else console.log("Error!");
+      })
+
+    </script>
+  </body>
+</html>

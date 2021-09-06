@@ -1,0 +1,16 @@
+<%- include('templates/head'); %>
+
+  <div class="app-container">
+    <form
+      id="usersForm"
+      action="/users/oneUser"
+      method="POST"
+    >
+    <h2>Get One User</h2>
+      <label for="username">Username ID</label>
+      <input type="text" name="id" required />
+      <input type="submit" value="SUBMIT" />
+    </form>
+  </div>
+</body>
+</html>

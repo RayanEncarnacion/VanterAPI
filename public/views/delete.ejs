@@ -1,0 +1,52 @@
+<%- include('templates/head'); %>
+
+  <div class="app-container">
+    <h2 id="usersFormHeader">Delete Your User</h2>
+    <form id="usersForm">
+      <label for="username">Username</label>
+      <input type="text" name="username" required />
+      <label for="username">Password</label>
+      <input type="text" name="password" required />
+      <div class="error-div"></div>
+      <input type="submit" id="deleteBtn" value="DELETE" />
+    </form>
+  </div>
+
+  <script>
+    const deleteBtn = document.querySelector("#deleteBtn");
+    const usernameInput = document.querySelector('input[name="username"]');
+    const errorParent = document.querySelector('.error-div')
+    const passwordInput = document.querySelector('input[name="password"]');
+
+    deleteBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      try {
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        const data = await fetch(`/delete/${username}/${password}`, {
+          method: "delete",
+        });
+        const res = await data.json(); 
+      
+        if (errorParent.querySelector('p')) document.querySelector('.error-paragraph').style.display = 'none';
+        if (res.deleted) window.location.href = "/users"; 
+        if (res.pwError) {
+          const error = `<p class="error-paragraph">${res.pwError}</p>` 
+          errorParent.insertAdjacentHTML("afterbegin", error)
+        }
+        if (res.userError) {
+          const error = `<p class="error-paragraph">${res.userError}</p>` 
+          errorParent.insertAdjacentHTML("afterbegin", error) 
+        }
+        if (res.server) {
+          const error = `<p class="error-paragraph">${res.pwError}</p>` 
+          errorParent.insertAdjacentHTML("afterbegin", error) 
+        }
+
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  </script>
+</body>
+</html>

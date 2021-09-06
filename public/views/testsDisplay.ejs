@@ -1,0 +1,23 @@
+<%- include('templates/head'); %>
+
+  <div class="app-container">
+    <h2>My tests</h2>
+    <div class="user-container">
+      <p><span>Username</span> : <%= username %></p>
+      <% if (tests) { %>
+       <% tests.forEach(test => { %>
+        <% if (test.length >= 1 ) { %>
+         <% var newTest = test.split(',')  %> 
+         <% newTest.forEach(test => { %>
+            <p><span>Test</span> : <%= test %></p>
+         <% }) %>
+        <% } %>
+       <% }) %>
+      <% } %>
+    </div>
+    <a href="/users" class="btn" style="margin-top: 3em !important"
+      >GO TO PANEL</a
+    >
+  </div>
+</body>
+</html>
