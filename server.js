@@ -7,7 +7,6 @@ const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const usersRoute = require("./routes/users");
 const updateRoute = require("./routes/update");
-const testsRoute = require("./routes/tests");
 const deleteRoute = require("./routes/delete");
 
 // Send and receive data as JSON
@@ -43,9 +42,6 @@ app.get("/login", (req, res) => {
 app.get("/users", (req, res) => {
   res.render("users");
 });
-app.get("/tests", (req, res) => {
-  res.render("getTests");
-});
 app.get("/update", (req, res) => {
   res.render("update");
 });
@@ -58,7 +54,6 @@ app.use("/", registerRoute);
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/users", usersRoute);
-app.use("/tests", testsRoute);
 app.use("/update", updateRoute);
 app.use("/delete", deleteRoute);
 

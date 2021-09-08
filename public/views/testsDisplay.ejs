@@ -4,7 +4,7 @@
     <h2>My tests</h2>
     <div class="user-container">
       <p><span>Username</span> : <%= username %></p>
-      <% if (tests) { %>
+      <% if (tests.length > 0) { %>
        <% tests.forEach(test => { %>
         <% if (test.length >= 1 ) { %>
          <% var newTest = test.split(',')  %> 
@@ -13,7 +13,9 @@
          <% }) %>
         <% } %>
        <% }) %>
-      <% } %>
+      <% } else { %>
+        <p style="text-align: center;">NO TEST REGISTERED!</p>
+        <% } %>
     </div>
     <a href="/users" class="btn" style="margin-top: 3em !important"
       >GO TO PANEL</a

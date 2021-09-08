@@ -27,7 +27,7 @@ submitInput.addEventListener('click', async (e) => {
    errorParent.insertAdjacentHTML("afterbegin", error)
    setTimeout(3000, errorParent.remove())
   } else {
-    const data = await fetch(`/register/${usernameInput.value}/${passwordInput.value}/${confirmationInput.value}`, {method: "POST"})
+    const data = await fetch(`/register/enter/${usernameInput.value}/${passwordInput.value}/${confirmationInput.value}`, {method: "POST"})
     const res = await data.json()
     
     if (res.status) {

@@ -2,7 +2,7 @@
 
 <div class="app-container">
   <form autocomplete="off" class="flex-container" style="width: 100%;" action="">
-    <h2>Get Tests</h2>
+    <h2>Choose your Tests</h2>
     <h3>User ID</h2>
     <input type="text" name="id" style="margin-bottom: 1em;" required>
     <h3>Select Test</h2>
@@ -40,7 +40,7 @@ let tests = [];
     checkedBoxes.forEach(box => tests.push(box.name));
     
     try {
-      const data = await fetch(`/tests/${id.value}/${tests}`, {method: "PUT"});
+      const data = await fetch(`/users/tests/${id.value}/${tests}`, {method: "PUT"});
       const res = await data.json();
 
       if (res.updated) {

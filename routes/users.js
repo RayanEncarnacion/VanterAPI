@@ -36,4 +36,46 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 
+//  Render Tests pages
+
+router.get("/tests", (req, res) => res.render("getTests"));
+router.get("/tests/myTests", (req, res) => res.render("getMyTests"));
+
+// Add tests
+router.put("/tests/:id/:tests", async (req, res) => {
+  const testsArray = req.params.tests;
+  const id = req.params.id;
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { tests: testsArray },
+      },
+      {
+        new: true,
+        useFindAndModify: false,
+      }
+    );
+    user ? res.json({ updated: true }) : res.json({ updated: false });
+  } catch (error) {
+    res.json(error);
+  }
+});
+
+// Display tests
+router.post("/tests/myTests", async (req, res) => {
+  try {
+    const user = await User.findById(req.body.id);
+
+    user
+      ? res.render("testsDisplay", {
+          username: user.username,
+          tests: user.tests,
+        })
+      : res.json({ message: "User not found!" });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
 module.exports = router;
