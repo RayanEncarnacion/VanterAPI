@@ -6,8 +6,6 @@ const port = process.env.PORT || 3000;
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const usersRoute = require("./routes/users");
-const updateRoute = require("./routes/update");
-const deleteRoute = require("./routes/delete");
 
 // Send and receive data as JSON
 app.use(express.json());
@@ -42,20 +40,12 @@ app.get("/login", (req, res) => {
 app.get("/users", (req, res) => {
   res.render("users");
 });
-app.get("/update", (req, res) => {
-  res.render("update");
-});
-app.get("/delete", (req, res) => {
-  res.render("delete");
-});
 
 // Using external routes files to manage requests
 app.use("/", registerRoute);
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 app.use("/users", usersRoute);
-app.use("/update", updateRoute);
-app.use("/delete", deleteRoute);
 
 app.listen(port, () => {
   console.log(`Server running on ${port}!`);

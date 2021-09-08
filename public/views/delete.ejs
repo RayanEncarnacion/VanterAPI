@@ -23,7 +23,7 @@
       try {
         const username = usernameInput.value;
         const password = passwordInput.value;
-        const data = await fetch(`/delete/${username}/${password}`, {
+        const data = await fetch(`/users/delete/${username}/${password}`, {
           method: "delete",
         });
         const res = await data.json(); 

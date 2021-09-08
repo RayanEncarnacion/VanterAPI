@@ -25,7 +25,7 @@
       updateBtn.addEventListener('click', async (e) => {
         e.preventDefault()
       
-        const data = await fetch(`/update/${id.value}/${username.value}/${password.value}`, {
+        const data = await fetch(`/users/update/${id.value}/${username.value}/${password.value}`, {
           method: "put"
         });
         const res = await data.json();
