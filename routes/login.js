@@ -4,14 +4,26 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
+// Capturing params for every GET request in this router
+router.param("username", (req, res, next, username) => {
+  req.username = username;
+  next();
+});
+router.param("password", (req, res, next, password) => {
+  req.password = password;
+  next();
+});
+
+// Verify credentials
 router.get("/:username/:password", async (req, res) => {
-  const username = req.params.username;
-  const password = req.params.password;
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username: req.username });
     if (user) {
       // Validation
-      const passwordValidation = await bcrypt.compare(password, user.password);
+      const passwordValidation = await bcrypt.compare(
+        req.password,
+        user.password
+      );
       // Send response on validation
       passwordValidation
         ? res.json({ logged: true })

@@ -12,8 +12,7 @@ router.get("/tests/myTests", (req, res) => res.render("getMyTests"));
 router.get("/delete", (req, res) => res.render("delete"));
 
 // Get one user
-router.get("/oneUser", async (req, res) => {
-  console.log(req.body);
+router.post("/oneUser", async (req, res) => {
   try {
     // Find user with id from the request body
     const user = await User.findOne({ _id: req.body.id });

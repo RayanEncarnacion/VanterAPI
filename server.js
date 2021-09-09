@@ -34,6 +34,9 @@ app.get("/", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("register");
 });
+app.get("/welcome", (req, res) => {
+  res.render("welcome");
+});
 app.get("/login", (req, res) => {
   res.render("login");
 });
