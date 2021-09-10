@@ -26,8 +26,9 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
-  .then()
+  .then(() => console.log("Database connected!"))
   .catch((error) => console.log(error));
 
 // Routing
