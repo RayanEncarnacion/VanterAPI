@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -6,15 +7,17 @@ const port = process.env.PORT || 7000;
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const usersRoute = require("./routes/users");
+const publicRoute = path.join(__dirname, "/public");
+const viewsRoute = path.join(__dirname, "/public/views");
 
 // Send and receive data as JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Setting EJS as a View engine
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/public/views");
+app.set("views", viewsRoute);
 // Static forlder
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(publicRoute));
 
 dotenv.config();
 
