@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 7000;
 const registerRoute = require("./routes/register");
@@ -23,7 +24,6 @@ mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   })
   .then(() => console.log("Database connected!"))
   .catch((error) => console.log(error));
@@ -52,5 +52,5 @@ app.use("/register", registerRoute);
 app.use("/users", usersRoute);
 
 app.listen(port, () => {
-  console.log(`Server running on ${port}!`);
+  console.log(`Server running on ${port}! ${typeof process.env.MONGODB_URI}`);
 });
