@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const app = express();
 const port = process.env.PORT || 7000;
 const registerRoute = require("./routes/register");
@@ -19,11 +18,9 @@ app.set("views", viewsRoute);
 // Static forlder
 app.use(express.static(publicRoute));
 
-dotenv.config();
-
 // DB connection
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

@@ -1,7 +1,7 @@
 {
   "name": "vanter-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "This app was created while i was learning about NodeJs and Express to create server side\r applications. Then i thought about, How can i connect both front end and back end in a\r single application using Js and NodeJs. At the end i build this simple but complete CRUD\r (Create, Read, Update, Delete) application.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
@@ -11,9 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mongoose": "^6.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RayanEncarnacion/VanterAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RayanEncarnacion/VanterAPI/issues"
+  },
+  "homepage": "https://github.com/RayanEncarnacion/VanterAPI#readme"
 }
